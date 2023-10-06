@@ -78,25 +78,27 @@ public class Manager : MonoBehaviour
         await Task.Delay(10000);
         transitionLerpTime = 5;
         targetGimblePosition = defaultGimblePosition;
-        transition.SetActive(false);
         callBack();
     }
-    public void ChangeEvent()
+    public async void ChangeEvent()
     {
         if (isTransitioning)
             return;
 
         isTransitioning = true;
 
-        void EndScene()
+        async void EndScene()
         {
             scenes[currentScene].SetActive(true);
+            await Task.Delay(3000);
+            transition.SetActive(false);
             isTransitioning = false;
         }
 
+        ExecuteTransitionAnimation(EndScene);
+        await Task.Delay(2000);
         scenes[currentScene].SetActive(false);
         IncrementScene(1);
-        ExecuteTransitionAnimation(EndScene);
     }
 
     public void ToggleCameraPosition()

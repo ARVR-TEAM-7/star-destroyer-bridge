@@ -18,7 +18,12 @@ public class HyperSpaceSequence : MonoBehaviour
 
     private Vector3 targetPosition;
     private Vector3 targetSize;
-    private async void OnEnable()
+    private void OnEnable()
+    {
+        Sequence();
+    }
+
+    private async void Sequence()
     {
         hyperSpace.localPosition = entryPosition;
         hyperSpace.localScale = entrySize;
@@ -26,14 +31,18 @@ public class HyperSpaceSequence : MonoBehaviour
         targetPosition = entryPosition;
         targetSize = entrySize;
 
-        await Task.Delay(3000);
+        await Task.Delay(2000);
         targetPosition = activePosition;
         targetSize = activeSize;
+
+        await Task.Delay(8000);
+        targetPosition = exitPosition;
+        targetSize = exitSize;
     }
 
     private void Update()
     {
         hyperSpace.localPosition = Vector3.Lerp(hyperSpace.localPosition, targetPosition, Time.deltaTime * 10f);
-        hyperSpace.localScale = Vector3.Lerp(hyperSpace.localScale, targetSize, Time.deltaTime * 10f);
+        hyperSpace.localScale = Vector3.Lerp(hyperSpace.localScale, targetSize, Time.deltaTime * 5f);
     }
 }
