@@ -7,26 +7,35 @@ using System;
 public class Manager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Transform cameraGimble;
+    public Transform wallProjector;
+    public Transform gimble;
     public GameObject scenesContainer;
     public GameObject transition;
     public Vector3 outOfBridgePosition;
+    public Vector3 transitionPosition;
 
     private bool isTransitioning;
     private int currentScene;
     private bool cameraStateFlag;
+    private float transitionLerpTime;
+
     private Vector3 defaultCameraPosition;
-    //private Quaternion defaultCameraRotation;
+    private Vector3 defaultGimblePosition;
 
     private Vector3 targetCameraPosition;
+    private Vector3 targetGimblePosition;
     //private Quaternion targetCameraRotation;
     private List<GameObject> scenes = new List<GameObject>();
 
     private void Awake()
     {
-        defaultCameraPosition = cameraGimble.transform.position;
-        targetCameraPosition = cameraGimble.transform.position;
-        //defaultCameraRotation = cameraGimble.transform.rotation;
+        defaultCameraPosition = wallProjector.transform.localPosition;
+        defaultGimblePosition = gimble.transform.localPosition;
+
+        targetCameraPosition = wallProjector.transform.localPosition;
+        targetGimblePosition = gimble.transform.localPosition;
+
+        //defaultCameraRotation = cameras.transform.rotation;
         for (int i = 0; i < scenesContainer.transform.childCount; i++)
         {
             scenesContainer.transform.GetChild(i).gameObject.SetActive(false);
@@ -43,7 +52,8 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cameraGimble.position = Vector3.Lerp(cameraGimble.position, targetCameraPosition, Time.deltaTime * 1.5f);
+        wallProjector.localPosition = Vector3.Lerp(wallProjector.localPosition, targetCameraPosition, Time.deltaTime * 1.5f);
+        gimble.localPosition = Vector3.Lerp(gimble.localPosition, targetGimblePosition, Time.deltaTime * transitionLerpTime);
     }
 
     private void IncrementScene(int amount)
@@ -62,7 +72,11 @@ public class Manager : MonoBehaviour
     private async void ExecuteTransitionAnimation(Action callBack)
     {
         transition.SetActive(true);
+        transitionLerpTime = 0.5f;
+        targetGimblePosition = transitionPosition;
         await Task.Delay(5000);
+        transitionLerpTime = 5;
+        targetGimblePosition = defaultGimblePosition;
         transition.SetActive(false);
         callBack();
     }

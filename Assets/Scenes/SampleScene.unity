@@ -323,10 +323,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1217abf22f3a144982af99a6ec53cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraGimble: {fileID: 1525975343}
+  wallProjector: {fileID: 1525975343}
+  gimble: {fileID: 713790445}
   scenesContainer: {fileID: 948363568}
   transition: {fileID: 1251076473}
-  outOfBridgePosition: {x: 0, y: 0, z: 7.58}
+  outOfBridgePosition: {x: 0, y: 0.7, z: 11}
+  transitionPosition: {x: 0, y: 0, z: -1}
 --- !u!1 &627527529
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +611,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675664434}
   m_CullTransparentMesh: 1
+--- !u!1 &713790444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 713790445}
+  m_Layer: 0
+  m_Name: Gimble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &713790445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713790444}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1525975343}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &754305232
 GameObject:
   m_ObjectHideFlags: 0
@@ -11947,7 +11981,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501801582}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5361b0549a89c5479f97cc6fab5431d, type: 3}
   m_Name: 
@@ -12194,7 +12228,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 713790445}
     m_Modifications:
     - target: {fileID: 592046563041838447, guid: 99ada98b5f621a14aac2a8b37657bb0e,
         type: 3}
@@ -12309,17 +12343,17 @@ PrefabInstance:
     - target: {fileID: 7581334251115484042, guid: 99ada98b5f621a14aac2a8b37657bb0e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7581334251115484042, guid: 99ada98b5f621a14aac2a8b37657bb0e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7581334251115484042, guid: 99ada98b5f621a14aac2a8b37657bb0e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7581334251115484042, guid: 99ada98b5f621a14aac2a8b37657bb0e,
         type: 3}
@@ -13003,7 +13037,7 @@ SceneRoots:
   - {fileID: 1130422182}
   - {fileID: 598895785}
   - {fileID: 805371809}
-  - {fileID: 1525975342}
+  - {fileID: 713790445}
   - {fileID: 1268987085}
   - {fileID: 410087041}
   - {fileID: 630307671}
