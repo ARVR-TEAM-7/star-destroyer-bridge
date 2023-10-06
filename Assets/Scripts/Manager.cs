@@ -72,9 +72,10 @@ public class Manager : MonoBehaviour
     private async void ExecuteTransitionAnimation(Action callBack)
     {
         transition.SetActive(true);
+        await Task.Delay(100);
         transitionLerpTime = 0.5f;
         targetGimblePosition = transitionPosition;
-        await Task.Delay(5000);
+        await Task.Delay(10000);
         transitionLerpTime = 5;
         targetGimblePosition = defaultGimblePosition;
         transition.SetActive(false);
