@@ -982,7 +982,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -11923,7 +11923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1501801583
 Transform:
   m_ObjectHideFlags: 0
@@ -12010,7 +12010,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501801582}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -12221,10 +12221,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2629436380155158348, guid: 99ada98b5f621a14aac2a8b37657bb0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2629436380155158349, guid: 99ada98b5f621a14aac2a8b37657bb0e,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629436380155158355, guid: 99ada98b5f621a14aac2a8b37657bb0e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2629436380155158355, guid: 99ada98b5f621a14aac2a8b37657bb0e,
         type: 3}
