@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour
     public GameObject scenesContainer;
     public Vector3 outOfBridgePosition;
 
+    private bool cameraStateFlag;
     private Vector3 defaultCameraPosition;
     //private Quaternion defaultCameraRotation;
 
@@ -34,16 +35,19 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        cameraGimble.position = Vector3.Lerp(cameraGimble.position, targetCameraPosition, Time.deltaTime * 1.5f);
     }
 
-    public void MoveCameraOutOfBridge()
+    public void ToggleCameraPosition()
     {
-        targetCameraPosition = outOfBridgePosition;
-    }
-
-    public void MoveCameraIntoBridge()
-    {
-        targetCameraPosition = defaultCameraPosition;
+        if (cameraStateFlag)
+        {
+            targetCameraPosition = defaultCameraPosition;
+        }
+        else
+        {
+            targetCameraPosition = outOfBridgePosition;
+        }
+        cameraStateFlag = !cameraStateFlag;
     }
 }
