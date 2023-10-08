@@ -14,6 +14,8 @@ public class Manager : MonoBehaviour
     public Vector3 outOfBridgePosition;
     public Vector3 transitionIntermediatePosition;
     public Vector3 transitionPosition;
+    public AudioSource enterHyperspaceSound;
+    public AudioSource exitHyperspaceSound;
 
     private bool isTransitioning;
     private int currentScene;
@@ -72,6 +74,7 @@ public class Manager : MonoBehaviour
 
     private async void ExecuteTransitionAnimation(Action callBack)
     {
+        enterHyperspaceSound.PlayOneShot(enterHyperspaceSound.clip, 1f);
         transition.SetActive(true);
         transitionLerpTime = 0.3f;
         targetGimblePosition = transitionIntermediatePosition;
@@ -81,6 +84,7 @@ public class Manager : MonoBehaviour
         await Task.Delay(8000);
         transitionLerpTime = 2;
         targetGimblePosition = defaultGimblePosition;
+        exitHyperspaceSound.PlayOneShot(exitHyperspaceSound.clip, 1f);
         callBack();
     }
     public async void ChangeEvent()
