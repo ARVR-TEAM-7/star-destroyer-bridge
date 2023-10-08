@@ -6,6 +6,8 @@ public class ShipMovement : MonoBehaviour
 {
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float[] transitionTimes;
+    [SerializeField] private AudioSource flyingSound;
+    [SerializeField] private int indexToPlaySound; // the position index at which to play the sound
 
     private Transform currentWaypoint;
     private Transform nextWaypoint;
@@ -35,9 +37,13 @@ public class ShipMovement : MonoBehaviour
 
         index++;
 
+        if (index == indexToPlaySound)
+        {
+            flyingSound.PlayOneShot(flyingSound.clip, 1f);
+        }
+
         if (index >= waypoints.Length - 1)
         {
-            gameObject.SetActive(false);
             yield break;
         }
 
