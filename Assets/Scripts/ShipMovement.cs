@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
+
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float[] transitionTimes;
     [SerializeField] private AudioSource[] flyingSounds;
     [SerializeField] private int[] indicesToPlaySound; // the position index at which to play the sound
 
+    // Technically you would want to make this call a base class with the proper events
+    // i.e., EventsClass extends ParticleShoot, where EventsClass contains a manadtory event()
+    [SerializeField] private ParticleShoot[] particleShoot;
+    [SerializeField] private int[] indicesToParticleShoot;
+
     private Transform currentWaypoint;
     private Transform nextWaypoint;
     private int waypointIndex = 0;
     private int audioIndex = 0;
+
 
     void OnEnable()
     {
@@ -51,6 +58,14 @@ public class ShipMovement : MonoBehaviour
                 if (audioIndex < indicesToPlaySound.Length - 1)
                 {
                   audioIndex++;
+                }
+            }
+
+            for (int i = 0; i < indicesToParticleShoot.Length; i++)
+            {
+                if (waypointIndex == indicesToParticleShoot[i])
+                {
+                    particleShoot[i].Shoot();
                 }
             }
 
