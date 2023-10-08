@@ -6,12 +6,13 @@ public class ShipMovement : MonoBehaviour
 {
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float[] transitionTimes;
-    [SerializeField] private AudioSource flyingSound;
-    [SerializeField] private int indexToPlaySound; // the position index at which to play the sound
+    [SerializeField] private AudioSource[] flyingSounds;
+    [SerializeField] private int[] indicesToPlaySound; // the position index at which to play the sound
 
     private Transform currentWaypoint;
     private Transform nextWaypoint;
-    private int index = 0;
+    private int waypointIndex = 0;
+    private int audioIndex = 0;
 
     void Start()
     {
@@ -22,34 +23,36 @@ public class ShipMovement : MonoBehaviour
 
     private IEnumerator TransitionToWaypoint()
     {
-        float transitionStartTime = Time.time;
-
-        while (Time.time - transitionStartTime < transitionTimes[index])
+        while(true)
         {
-            float time = (Time.time - transitionStartTime) / transitionTimes[index];
-            transform.localPosition = Vector3.Lerp(currentWaypoint.localPosition, nextWaypoint.localPosition, time);
-            transform.localRotation = Quaternion.Slerp(currentWaypoint.localRotation, nextWaypoint.localRotation, time);
-            yield return null;
+            float transitionStartTime = Time.time;
+
+            while (Time.time - transitionStartTime < transitionTimes[waypointIndex])
+            {
+                float time = (Time.time - transitionStartTime) / transitionTimes[waypointIndex];
+                transform.localPosition = Vector3.Lerp(currentWaypoint.localPosition, nextWaypoint.localPosition, time);
+                transform.localRotation = Quaternion.Slerp(currentWaypoint.localRotation, nextWaypoint.localRotation, time);
+                yield return null;
+            }
+
+            waypointIndex++;
+
+            if (waypointIndex == indicesToPlaySound[audioIndex])
+            {
+                flyingSounds[audioIndex].PlayOneShot(flyingSounds[audioIndex].clip, 1f);
+                if (audioIndex < indicesToPlaySound.Length - 1)
+                {
+                  audioIndex++;
+                }
+            }
+
+            if (waypointIndex >= waypoints.Length - 1)
+            {
+                yield break;
+            }
+
+            currentWaypoint = waypoints[waypointIndex];
+            nextWaypoint = waypoints[waypointIndex + 1];
         }
-
-        transform.localPosition = nextWaypoint.localPosition;
-        transform.localRotation = nextWaypoint.localRotation;
-
-        index++;
-
-        if (index == indexToPlaySound)
-        {
-            flyingSound.PlayOneShot(flyingSound.clip, 1f);
-        }
-
-        if (index >= waypoints.Length - 1)
-        {
-            yield break;
-        }
-
-        currentWaypoint = waypoints[index];
-        nextWaypoint = waypoints[index + 1];
-
-        StartCoroutine(TransitionToWaypoint());
     }
 }
