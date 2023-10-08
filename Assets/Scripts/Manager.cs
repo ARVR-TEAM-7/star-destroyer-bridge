@@ -12,6 +12,7 @@ public class Manager : MonoBehaviour
     public GameObject scenesContainer;
     public GameObject transition;
     public Vector3 outOfBridgePosition;
+    public Vector3 transitionIntermediatePosition;
     public Vector3 transitionPosition;
 
     private bool isTransitioning;
@@ -46,7 +47,7 @@ public class Manager : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -72,11 +73,13 @@ public class Manager : MonoBehaviour
     private async void ExecuteTransitionAnimation(Action callBack)
     {
         transition.SetActive(true);
-        await Task.Delay(100);
-        transitionLerpTime = 0.5f;
+        transitionLerpTime = 0.3f;
+        targetGimblePosition = transitionIntermediatePosition;
+        await Task.Delay(2000);
+        transitionLerpTime = 3;
         targetGimblePosition = transitionPosition;
-        await Task.Delay(10000);
-        transitionLerpTime = 5;
+        await Task.Delay(8000);
+        transitionLerpTime = 2;
         targetGimblePosition = defaultGimblePosition;
         callBack();
     }
