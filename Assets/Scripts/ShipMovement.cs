@@ -14,11 +14,19 @@ public class ShipMovement : MonoBehaviour
     private int waypointIndex = 0;
     private int audioIndex = 0;
 
-    void Start()
+    void OnEnable()
     {
+        ResetTransform();
         currentWaypoint = waypoints[0];
         nextWaypoint = waypoints[1];
         StartCoroutine(TransitionToWaypoint());
+    }
+
+    private void ResetTransform()
+    {
+        waypointIndex = 0;
+        transform.localPosition = waypoints[0].localPosition;
+        transform.localRotation = waypoints[0].localRotation;
     }
 
     private IEnumerator TransitionToWaypoint()
