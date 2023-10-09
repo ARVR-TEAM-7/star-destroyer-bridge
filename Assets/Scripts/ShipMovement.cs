@@ -72,7 +72,8 @@ public class ShipMovement : MonoBehaviour
 
             if (waypointIndex >= waypoints.Length - 1)
             {
-                gameObject.SetActive(false);
+                // This messes with the scene change mechanics, do not uncomment
+                //gameObject.SetActive(false);
                 yield break;
             }
 
