@@ -32,6 +32,7 @@ public class ShipMovement : MonoBehaviour
     private void ResetTransform()
     {
         waypointIndex = 0;
+        audioIndex = 0;
         transform.localPosition = waypoints[0].localPosition;
         transform.localRotation = waypoints[0].localRotation;
     }
@@ -71,6 +72,7 @@ public class ShipMovement : MonoBehaviour
 
             if (waypointIndex >= waypoints.Length - 1)
             {
+                gameObject.SetActive(false);
                 yield break;
             }
 
