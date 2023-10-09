@@ -10122,6 +10122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 2036562537}
+  target: {fileID: 1154643686}
 --- !u!1 &510228692
 GameObject:
   m_ObjectHideFlags: 0
@@ -37348,7 +37349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Click Me?
+  m_text: Shoot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -38550,10 +38551,15 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.scalar
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3541162917309592987, guid: c4c6645fe2559413ebb0d3adcff7f9d2,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ce7d07a60356542c0ac7f3dc7b06e4d5, type: 3}
     - target: {fileID: 5286116623236382000, guid: c4c6645fe2559413ebb0d3adcff7f9d2,
         type: 3}
       propertyPath: m_Name
-      value: Shooting
+      value: StarDestroyerShooting
       objectReference: {fileID: 0}
     - target: {fileID: 5286116623236382000, guid: c4c6645fe2559413ebb0d3adcff7f9d2,
         type: 3}
@@ -39877,7 +39883,7 @@ GameObject:
   - component: {fileID: 1969630992}
   - component: {fileID: 1969630991}
   m_Layer: 5
-  m_Name: Test_Button
+  m_Name: Shoot_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39959,7 +39965,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 448215078}
         m_TargetAssemblyTypeName: StarDestroyerShoot, Assembly-CSharp
         m_MethodName: Shoot
