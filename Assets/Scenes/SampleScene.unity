@@ -21410,7 +21410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableTilt: 1
-  tiltIntensity: 20
+  tiltIntensity: 10
   tiltPeriod: 10
   bridgeAssembly: {fileID: 922154304}
   wallProjector: {fileID: 1525975343}
