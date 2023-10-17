@@ -7,6 +7,10 @@ using System;
 public class Manager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public bool enableTilt;
+    public float tiltIntensity = 1;
+    public float tiltPeriod = 1;
+    public Transform bridgeAssembly;
     public Transform wallProjector;
     public Transform gimble;
     public GameObject scenesContainer;
@@ -57,6 +61,12 @@ public class Manager : MonoBehaviour
     {
         wallProjector.localPosition = Vector3.Lerp(wallProjector.localPosition, targetCameraPosition, Time.deltaTime * 1.5f);
         gimble.localPosition = Vector3.Lerp(gimble.localPosition, targetGimblePosition, Time.deltaTime * transitionLerpTime);
+        
+        if (enableTilt)
+        {
+            
+            bridgeAssembly.rotation = Quaternion.Euler(new Vector3(0, 0, tiltIntensity * Mathf.Sin(Time.realtimeSinceStartup/tiltPeriod)));
+        }
     }
 
     private void IncrementScene(int amount)
