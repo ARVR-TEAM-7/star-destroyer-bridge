@@ -8,8 +8,7 @@ public class StarDestroyerEntrySounds : MonoBehaviour
     public AudioSource exitHyperspace2;
     public AudioSource exitHyperspace3;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(EntrySequence());
     }
@@ -24,5 +23,7 @@ public class StarDestroyerEntrySounds : MonoBehaviour
 
         yield return new WaitForSeconds(0.8f);
         exitHyperspace3.PlayOneShot(exitHyperspace3.clip, 1f);
+
+        yield break;
     }
 }

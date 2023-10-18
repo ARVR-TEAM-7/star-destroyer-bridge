@@ -9,8 +9,7 @@ public class DeathStarFiringSounds : MonoBehaviour
     public AudioSource deactivatingSound;
     public AudioSource somethingExplodingSound;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(FiringSequence());
     }
@@ -30,5 +29,7 @@ public class DeathStarFiringSounds : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         somethingExplodingSound.PlayOneShot(somethingExplodingSound.clip, 1f);
+
+        yield break;
     }
 }
