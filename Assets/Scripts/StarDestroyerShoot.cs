@@ -8,6 +8,7 @@ public class StarDestroyerShoot : MonoBehaviour
     public AudioSource sound;
     [SerializeField]
     public GameObject target;
+    public bool isShooting = false;
     // Start is called before the first frame update
     // void Start()
     // {
@@ -21,8 +22,10 @@ public class StarDestroyerShoot : MonoBehaviour
     //     // Shoot();
     // }
 
-    public void Shoot()
+    public async void Shoot()
     {
+      isShooting = !isShooting;
+      while(isShooting == true) {
         emitter = GetComponent<ParticleSystem>();
         sound.Play();
         // Calculate direction to the target
@@ -30,8 +33,9 @@ public class StarDestroyerShoot : MonoBehaviour
         // rotate emitter to face the target
         emitter.transform.rotation = Quaternion.LookRotation(targetDirection);
         emitter.Emit(1);
+        await Task.Delay(175);
         // Task.Delay(200);
         // emitter.Emit(1);
-
+      }
     }
 }
