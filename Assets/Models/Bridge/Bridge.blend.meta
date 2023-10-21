@@ -3,7 +3,22 @@ guid: b943e0bba3f272b4f9496f7b2fa3c343
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ShipGrey
+    second: {fileID: 2100000, guid: 7d804ac8363745743970b8b4c0f84170, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black floor
+    second: {fileID: 2100000, guid: 4fd8172ba3f3ea049b230d82fbb5c4f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red light
+    second: {fileID: 2100000, guid: 38d4ae5b55b8b4265a800de52e96dd45, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
