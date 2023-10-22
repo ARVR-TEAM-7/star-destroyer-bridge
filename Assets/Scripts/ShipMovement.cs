@@ -22,21 +22,22 @@ public class ShipMovement : MonoBehaviour
     private int audioIndex = 0;
     private int bridgeIndex = 0;
 
-
     void OnEnable()
     {
         ResetTransform();
+    }
+
+    public void ResetTransform()
+    {
+        StopAllCoroutines();
+        waypointIndex = 0;
+        audioIndex = 0;
+        bridgeIndex = 0;
+        transform.localPosition = waypoints[0].localPosition;
+        transform.localRotation = waypoints[0].localRotation;
         currentWaypoint = waypoints[0];
         nextWaypoint = waypoints[1];
         StartCoroutine(TransitionToWaypoint());
-    }
-
-    private void ResetTransform()
-    {
-        waypointIndex = 0;
-        audioIndex = 0;
-        transform.localPosition = waypoints[0].localPosition;
-        transform.localRotation = waypoints[0].localRotation;
     }
 
     private IEnumerator TransitionToWaypoint()
@@ -85,7 +86,7 @@ public class ShipMovement : MonoBehaviour
             {
                 // This messes with the scene change mechanics, do not uncomment
                 //gameObject.SetActive(false);
-                ResetTransform();
+                yield break;
             }
 
             currentWaypoint = waypoints[waypointIndex];
