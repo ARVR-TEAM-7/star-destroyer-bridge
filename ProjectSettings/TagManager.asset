@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - SkyboxCamera
+  - Wall_Front
+  - Wall_Floor
+  - Wall_Right
+  - Wall_Left
   layers:
   - Default
   - TransparentFX
@@ -13,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Floor Cam
-  - 
+  - Bridge
   - 
   - 
   - 
