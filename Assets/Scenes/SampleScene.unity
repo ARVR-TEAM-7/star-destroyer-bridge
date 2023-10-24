@@ -38646,6 +38646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598895785}
   - component: {fileID: 598895786}
+  - component: {fileID: 598895787}
   m_Layer: 5
   m_Name: GameManager
   m_TagString: Untagged
@@ -38699,6 +38700,18 @@ MonoBehaviour:
   transitionPosition: {x: 0, y: 0, z: -0.5}
   enterHyperspaceSound: {fileID: 995263677}
   exitHyperspaceSound: {fileID: 1770545006}
+--- !u!114 &598895787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598895784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98409795acfe479b954beb1519905ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617649330
 GameObject:
   m_ObjectHideFlags: 0
@@ -83344,11 +83357,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1169934462}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1878360485805345017, guid: 99ada98b5f621a14aac2a8b37657bb0e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1337436739}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99ada98b5f621a14aac2a8b37657bb0e, type: 3}
 --- !u!4 &1337436736 stripped
 Transform:
@@ -83362,20 +83371,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1337436735}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1337436738 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1878360485805345017, guid: 99ada98b5f621a14aac2a8b37657bb0e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1337436735}
-  m_PrefabAsset: {fileID: 0}
---- !u!81 &1337436739
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337436738}
-  m_Enabled: 1
 --- !u!1 &1339478798
 GameObject:
   m_ObjectHideFlags: 0
