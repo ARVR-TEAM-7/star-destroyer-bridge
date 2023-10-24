@@ -20,7 +20,7 @@ public class ShipMovement : MonoBehaviour
     private Transform nextWaypoint;
     private int waypointIndex = 0;
     private int audioIndex = 0;
-    private int bridgeIndex = 0;
+    //private int bridgeIndex = 0;
 
     void OnEnable()
     {
@@ -32,7 +32,7 @@ public class ShipMovement : MonoBehaviour
         StopAllCoroutines();
         waypointIndex = 0;
         audioIndex = 0;
-        bridgeIndex = 0;
+        //bridgeIndex = 0;
         transform.localPosition = waypoints[0].localPosition;
         transform.localRotation = waypoints[0].localRotation;
         currentWaypoint = waypoints[0];
